@@ -1,0 +1,23 @@
+name: Python CI
+
+on:
+  workflow_dispatch:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create a file
+        run: |
+          echo "Hello from Job 1" > message.txt
+          ls
+
+  job2:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check for file
+        run: |
+          ls
+          cat message.txt
