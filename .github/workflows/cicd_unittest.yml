@@ -9,6 +9,11 @@ on:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      name:
+        description: "Enter your name"
+        required: true
+        default: "jaishree"
 
 jobs:
   test:
@@ -35,3 +40,6 @@ jobs:
       - name: Run tests
         run: |
           pytest
+      # setp 5
+      - name: Print name
+        run: echo "eHello ${{ github.event.inputs.name}}"
