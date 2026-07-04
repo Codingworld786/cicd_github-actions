@@ -1,4 +1,4 @@
-name: Python CI
+name: Multiple jobs Workflow
 
 on:
   workflow_dispatch:
