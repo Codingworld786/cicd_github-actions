@@ -1,4 +1,4 @@
-name: Lesson 4 - Artifacts
+name: Lesson 4 - Artifacts file wise
 
 on:
   workflow_dispatch: #manual trigger
