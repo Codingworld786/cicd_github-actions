@@ -29,10 +29,10 @@ jobs:
       - name: Download Artifact
         uses: actions/download-artifact@v4
         with:
-          name: data
+          name: data # name of the folder to download
 
       - name: Display file
         run: |
           ls
-          cat data/file1.txt
-          cat data/file2.txt
+          cat file1.txt  
+          cat file2.txt
