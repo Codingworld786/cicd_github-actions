@@ -1,0 +1,34 @@
+name: Lesson 4 - Artifacts
+
+on:
+  workflow_dispatch: #manual trigger
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create file
+        run: |
+          echo "Hello from Job 1" > message.txt
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: my-message
+          path: message.txt
+
+  job2:
+    needs: job1
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: my-message
+
+      - name: Display file
+        run: |
+          ls
+          cat message.txt
