@@ -1,0 +1,38 @@
+name: Lesson 4 - Artifacts
+
+on:
+  workflow_dispatch: #manual trigger
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create directory and file
+        run: |
+            mkdir data
+            echo "Hello from Job 1 and file1" > data/file1.txt
+            echo "Hello from Job 1 and file2" > data/file2.txt
+
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: data
+          path: data
+
+  job2:
+    needs: job1
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: data
+
+      - name: Display file
+        run: |
+          ls
+          cat data/file1.txt
+          cat data/file2.txt
